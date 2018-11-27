@@ -1,0 +1,22 @@
+{
+    "name": "nocarefree/larvel-spider",
+    "keywords": ["laravel", "eloquent", "taxonomy"],
+    "description": "create taxonomy extends laravel eloquent",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nocarefree",
+            "email": "170890803@qq.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "laravel/framework": "5.6.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Nocarefree\\Spider\\": "src"
+        }
+    }
+}
