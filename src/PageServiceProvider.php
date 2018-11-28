@@ -3,7 +3,7 @@
 namespace Nocarefree\PageManager;
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Support\ServiceProvider;
 
 class PageServiceProvider extends ServiceProvider
 {
@@ -28,6 +28,21 @@ class PageServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+
+        $this->loadRoutesFormMap();
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'admin');
+
+        $this->publishes([__DIR__ . '/../config/admin.php' => config_path('admin.php')], 'config');
+        $this->publishes([__DIR__ . '/../database/migrations' => database_path('migrations')], 'migrations');
+        $this->publishes([__DIR__ . '/../resources/views' => resource_path('views/vendor/admin')], 'views');
+        $this->publishes([__DIR__ . '/../resources/public' => public_path('vendor/admin')], 'public');
+
+
+        if($this->app->runningInConsole()){
+            $this->commands($this->commands);
+        }
+
         parent::boot();
     }
 
@@ -36,7 +51,7 @@ class PageServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function map()
+    public function loadRoutesFormMap()
     {
         $route_config = app('config')->get('admin.route');
 
@@ -47,7 +62,7 @@ class PageServiceProvider extends ServiceProvider
              ->group( __DIR__ . '/../routes/web.php' );
 
         $admin_route_path = base_path('routes/admin.php');
-        if(file_exists($admin_route_path)){
+        if(file_exists( $admin_route_path )){
             Route::domain( $route_config->domain )
                  ->middleware( ['admin','web'] )
                  ->namespace( $route_config->namespace )
@@ -59,9 +74,8 @@ class PageServiceProvider extends ServiceProvider
 
     public function register()
     {
-        $this->publishes([__DIR__ . '/../config/admin.php' => config_path('admin.php')], 'admin');
+        $this->mergeConfigFrom(__DIR__ . '/../config/admin.php', 'admin');
         $this->registerRouteMiddleware();
-        $this->commands($this->commands);
     }   
 
     /**
