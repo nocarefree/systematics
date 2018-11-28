@@ -18,5 +18,12 @@
         "psr-4": {
             "Nocarefree\\PageManager\\": "src"
         }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Nocarefree\\PageManager\\PageServiceProvider"
+            ]
+        }
     }
 }
