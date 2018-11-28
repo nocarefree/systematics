@@ -18,6 +18,7 @@ class PageServiceProvider extends ServiceProvider
         Console\AdminCommand::class,
         Console\CreateUserCommand::class,
         Console\InstallCommand::class,
+        Console\PublicshCommand::class,
         Console\UninstallCommand::class,
     ];
 
