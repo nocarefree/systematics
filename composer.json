@@ -1,7 +1,7 @@
 {
-    "name": "nocarefree/page-controller",
-    "keywords": ["laravel", "page", "permission"],
-    "description": "page permission",
+    "name": "nocarefree/page-manager",
+    "keywords": ["laravel", "admin", "page", "permission"],
+    "description": "Admin Page Permission Manager",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -16,7 +16,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Nocarefree\\Spider\\": "src"
+            "Nocarefree\\PageManager\\": "src"
         }
     }
 }
