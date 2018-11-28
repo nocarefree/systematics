@@ -1,7 +1,7 @@
 {
-    "name": "nocarefree/larvel-spider",
-    "keywords": ["laravel", "eloquent", "taxonomy"],
-    "description": "create taxonomy extends laravel eloquent",
+    "name": "nocarefree/page-controller",
+    "keywords": ["laravel", "page", "permission"],
+    "description": "page permission",
     "type": "library",
     "license": "MIT",
     "authors": [
