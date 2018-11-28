@@ -9,7 +9,7 @@ Installation
 
 > This package requires PHP 7.1+ and Laravel 5.5, for old versions please refer to [1.0.1]
 
-First, install laravel 5.5, and make sure that the database connection settings are correct.
+First, install laravel 5.6, and make sure that the database connection settings are correct.
 
 ```
 composer require nocarefree/page-manager
