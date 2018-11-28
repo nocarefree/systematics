@@ -2,7 +2,6 @@
 
 namespace Nocarefree\PageManager\Console;
 
-namespace Nocarefree\PageManager\Admin;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Str;
@@ -41,7 +40,7 @@ LOGO;
     public function handle()
     {
         $this->line(static::$logo);
-        $this->line(Admin::getLongVersion());
+        $this->line('Version 1.0.1');
 
         $this->comment('');
         $this->comment('Available commands:');
