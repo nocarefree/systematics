@@ -56,18 +56,19 @@ class PageServiceProvider extends ServiceProvider
     {
         $route_config = app('config')->get('admin.route');
 
-        Route::domain( $route_config->domain )
+        Route::domain( $route_config['domain'] )
              ->middleware( 'web' )
              ->namespace( $this->namespace )
-             ->prefix( $route_config->prefix )
+             ->prefix( $route_config['prefix'] )
              ->group( __DIR__ . '/../routes/web.php' );
 
         $admin_route_path = base_path('routes/admin.php');
+        
         if(file_exists( $admin_route_path )){
-            Route::domain( $route_config->domain )
+            Route::domain( $route_config['domain'] )
                  ->middleware( ['admin','web'] )
-                 ->namespace( $route_config->namespace )
-                 ->prefix( $route_config->prefix )
+                 ->namespace( $route_config['namespace'] )
+                 ->prefix( $route_config['prefix'] )
                  ->group( $admin_route_path );
         }
         
