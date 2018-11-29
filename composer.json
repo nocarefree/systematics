@@ -1,7 +1,7 @@
 {
-    "name": "nocarefree/page-manager",
-    "keywords": ["laravel", "admin", "page", "permission"],
-    "description": "Admin Page Permission Manager",
+    "name": "nocarefree/systematics",
+    "keywords": ["laravel", "relationship", "systematics", "category"],
+    "description": "design for table relationship",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -16,13 +16,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Nocarefree\\PageManager\\": "src"
+            "Nocarefree\\Systematics\\": "src"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Nocarefree\\PageManager\\PageServiceProvider"
+                "Nocarefree\\Systematics\\ServiceProvider"
             ]
         }
     }
