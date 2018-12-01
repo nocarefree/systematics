@@ -27,8 +27,6 @@ class ServiceProvider extends BaseServiceProvider
         if($this->app->runningInConsole()){
             $this->commands($this->commands);
         }
-
-        parent::boot();
     }
 
 
