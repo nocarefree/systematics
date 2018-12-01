@@ -7,12 +7,6 @@ use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
 class ServiceProvider extends BaseServiceProvider
 {
-    protected $namespace = 'Nocarefree\PageManager\Http\Controllers';
-
-    protected $routeMiddleware = [
-        'admin'  => \Nocarefree\PageManager\Http\Middleware\Authenticate::class,
-        'admin.guest' => \Nocarefree\PageManager\Http\Middleware\RedirectIfAuthenticated::class,
-    ];
 
     protected $commands = [
         Console\InstallCommand::class,
