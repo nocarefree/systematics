@@ -23,7 +23,10 @@
         "laravel": {
             "providers": [
                 "Nocarefree\\Systematics\\ServiceProvider"
-            ]
+            ],
+            "aliases": {
+                "Debugbar": "Nocarefree\\Systematics\\Facades"
+            }
         }
     }
 }
