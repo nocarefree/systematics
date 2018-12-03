@@ -4,6 +4,15 @@ namespace Nocarefree\Systematics;
 
 use Illuminate\Support\Facades\DB;
 
+/**
+ * 一个 DB 类型 ，一个是Eloquent
+ * User->sysmatics('sdfs')->getMany();
+ * User->sysmatics('sdfs')->getOne();
+ * User->sysmatics('sdfs')->getBelong();
+ * User->sysmatics('sdfs')->getTree();
+ * User->sysmatics('sdfs')->getBranch();
+ */
+
 class Sysmatics{
 	private $db;
 	private $table_sysmatics_type_map;

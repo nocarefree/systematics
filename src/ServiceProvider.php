@@ -10,7 +10,6 @@ class ServiceProvider extends BaseServiceProvider
 
     protected $commands = [
         Console\InstallCommand::class,
-        Console\UninstallCommand::class,
     ];
 
     /**
