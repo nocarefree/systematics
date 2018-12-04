@@ -14,6 +14,9 @@ class Model extends EloquentModel
 
 	public function systematics($type)
 	{
-		return Systematics::item($type, $this->getAttributes(), $this->getKeyName());	
+		return (new static)->newQuery()->with(function($query){
+			$query->where('code', $type);
+		});
 	}
+
 }
