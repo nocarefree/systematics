@@ -32,6 +32,9 @@ class ServiceProvider extends BaseServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(__DIR__ . '/../config/systematics.php', 'systematics');
+        $this->app->singleton('Systematics\Systematics', function () {
+            return new Systematics();
+        });
     }   
 
 
