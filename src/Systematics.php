@@ -32,6 +32,7 @@ class Systematics{
 	 */
 	private $cache;
 	private $cacheAvailable;
+
 	public function __construct(Connection $connection, $tableSysmaticsName = '', $tableSysmaticsTypesName = '' ,$cache = ture){
 		$this->connection = $connection;
 		$this->tableSysmaticsName      = $tableSysmaticsName?:config('sysmatics.databse.tableSysmaticsName'); 
@@ -61,7 +62,7 @@ class Systematics{
 	public function item($relationCode, $attributes = [], $primaryKey = 'id'){
 		return new Item($this, $relationCode, $attributes, $primaryKey);
 	}
-	public function getRelationTypeByCode($code){
+	public function getTypeByCode($code){
 		$key = 'getRelationTypeByCode-'. $code;
 		if( (strpos($code, '/') > 0) == false ){
 			return null;

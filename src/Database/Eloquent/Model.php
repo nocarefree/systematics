@@ -3,6 +3,7 @@
 namespace Nocarefree\Systematics\Eloquent;
 
 use Illuminate\Database\Eloquent\Model as EloquentModel;
+use Nocarefree\Systematics\Facades\Systematics;
 
 /**
  * Parents _targets() 
@@ -17,18 +18,19 @@ class Model extends EloquentModel
 	 */
 	private function _targets($model)
 	{
-		$type = $this->getTabel() . '/' . $model::getTable();
-
 		return $this->belongsToMany($model, config('systematics.database.table'), 'source_id', 'target_id')
-                	->wherePivot('type', $type);
+                	->wherePivot('type_id', $this->_getTypeId($this->getTabel().'/'.$model::getTable()) );
 	}
 
 	private function _sources($model)
 	{
-		$type = $model::getTable() . '/'. $this->getTabel();
-
 		return $this->belongsToMany($model, config('systematics.database.table'), 'target_id', 'source_id')
-                	->wherePivot('type', $type);
+                	->wherePivot('type_id', $this->_getTypeId($model::getTable().'/'.$this->getTabel()) );
+	}
+
+	private function _getTypeId($code){
+		$type = Systematics::getTypeByCode($code);
+		return $type ? $type->id : 0;
 	}
 
 }
