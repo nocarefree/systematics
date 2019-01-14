@@ -1,15 +1,9 @@
 <?php
 namespace Nocarefree\Systematics\Query;
+
 use Illuminate\Database\Connection;
 use Illuminate\Support\Facades\Cache;
-/**
- * 一个 DB 类型 ，一个是Eloquent
- * User->sysmatics('sdfs')->getMany();
- * User->sysmatics('sdfs')->getOne();
- * User->sysmatics('sdfs')->getBelong();
- * User->sysmatics('sdfs')->getTree();
- * User->sysmatics('sdfs')->getBranch();
- */
+
 class Systematics{
 	/**
 	 * [$connection default db connection]
