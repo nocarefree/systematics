@@ -1,6 +1,6 @@
 <?php
 
-namespace Nocarefree\PageManager\Console;
+namespace Nocarefree\Systematics\Console;
 
 use Illuminate\Console\Command;
 
