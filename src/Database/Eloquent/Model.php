@@ -1,6 +1,6 @@
 <?php
 
-namespace Nocarefree\Systematics\Eloquent;
+namespace Nocarefree\Systematics\Database\Eloquent;
 
 use Illuminate\Database\Eloquent\Model as EloquentModel;
 use Nocarefree\Systematics\Facades\Systematics;
@@ -16,21 +16,16 @@ class Model extends EloquentModel
 	 * @param  [type] $model [description]
 	 * @return [type]        [description]
 	 */
-	private function _targets($model)
+	public function _targets($model)
 	{
-		return $this->belongsToMany($model, config('systematics.database.table'), 'source_id', 'target_id')
-                	->wherePivot('type_id', $this->_getTypeId($this->getTabel().'/'.$model::getTable()) );
+		return $this->belongsToMany($model, Systematics::getRealtionsTableName(), 'source_id', 'target_id')
+                	->wherePivot('type_id', Systematics::relation($this->getTabel(), $model::getTable())->getId());
 	}
 
-	private function _sources($model)
+	public function _sources($model)
 	{
-		return $this->belongsToMany($model, config('systematics.database.table'), 'target_id', 'source_id')
-                	->wherePivot('type_id', $this->_getTypeId($model::getTable().'/'.$this->getTabel()) );
-	}
-
-	private function _getTypeId($code){
-		$type = Systematics::getTypeByCode($code);
-		return $type ? $type->id : 0;
+		return $this->belongsToMany($model, Systematics::getRealtionsTableName(), 'target_id', 'source_id')
+                	->wherePivot('type_id', Systematics::relation($model::getTable(), $this->getTabel())->getId());
 	}
 
 }

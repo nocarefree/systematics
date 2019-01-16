@@ -33,7 +33,7 @@ class ServiceProvider extends BaseServiceProvider
     {
         $this->mergeConfigFrom(__DIR__ . '/../config/systematics.php', 'systematics');
         $this->app->singleton('Systematics\Systematics', function () {
-            return new Systematics();
+            return new Systematics(DB::connection());
         });
     }   
 
