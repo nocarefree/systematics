@@ -22,7 +22,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Nocarefree\\Systematics\\ServiceProvider"
+                "Nocarefree\\Systematics\\SystematicsServiceProvider"
             ],
             "aliases": {
                 "Systematics": "Nocarefree\\Systematics\\Systematics"

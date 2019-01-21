@@ -10,7 +10,7 @@ class Relation{
 		$this->tableSource = $source;
 		$this->tableTarget = $target;
 
-		$this->type = $this->getTableTypes()->where(
+		$this->type = $this->sys->getTableTypes()->where(
 			'code', '=',
 			$source . $this->sys->getSplitChar() . $target
 		)->first();

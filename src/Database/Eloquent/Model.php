@@ -19,13 +19,13 @@ class Model extends EloquentModel
 	public function _targets($model)
 	{
 		return $this->belongsToMany($model, Systematics::getRealtionsTableName(), 'source_id', 'target_id')
-                	->wherePivot('type_id', Systematics::relation($this->getTabel(), $model::getTable())->getId());
+                	->wherePivot('type_id', Systematics::relation($this->getTable(), (new $model)->getTable())->getId());
 	}
 
 	public function _sources($model)
 	{
 		return $this->belongsToMany($model, Systematics::getRealtionsTableName(), 'target_id', 'source_id')
-                	->wherePivot('type_id', Systematics::relation($model::getTable(), $this->getTabel())->getId());
+                	->wherePivot('type_id', Systematics::relation($model::getTable(), (new $model)->getTable())->getId());
 	}
 
 }

@@ -15,18 +15,19 @@ class CreateSystematicsTables extends Migration
     {
         $connections = config('systematics.connections');
 
-        foreach($connections as $connnect => $value){
+        foreach($connections as $name => $value){
 
-            $table_name = ($value['table']['relations']['prefix']?:$value['table_prefix']).$value['table']['relations']['name'];
-            Schema::connection($connnect)->create($table_name, function (Blueprint $table) {
+            $table_name = $value['table_prefix'].$value['table_name']['relations'];
+            Schema::connection($name)->create($table_name, function (Blueprint $table) {
                 $table->increments('id');
-                $table->string('source_id', 60);
-                $table->string('target_id', 60);
-                $table->integer('type_id', 5);
+                $table->integer('source_id');
+                $table->integer('target_id');
+                $table->integer('type_id');
+                //$table->dropPrimary('type_id');
             });
 
-            $table_name = ($value['table']['types']['prefix']?:$value['table_prefix']).$value['table']['types']['name'];
-            Schema::connection($connnect)->create($table_name, function (Blueprint $table) {
+            $table_name = $value['table_prefix'].$value['table_name']['types'];
+            Schema::connection($name)->create($table_name, function (Blueprint $table) {
                 $table->increments('id');
                 $table->string('code', 255);
             });
@@ -42,11 +43,12 @@ class CreateSystematicsTables extends Migration
     {
         $connections = config('systematics.connections');
 
-        foreach($connections as $connnect => $value){
-            $table_name1 = ($value['table']['relations']['prefix']?:$value['table_prefix']).$value['table']['relations']['name'];
-            $table_name2 = ($value['table']['types']['prefix']?:$value['table_prefix']).$value['table']['types']['name'];
-            Schema::connection($connection)->dropIfExists( $table_name1 );
-            Schema::connection($connection)->dropIfExists( $table_name2 );
+        foreach($connections as $name => $value){
+            $table_name = $value['table_prefix'].$value['table_name']['relations'];
+            Schema::connection($name)->dropIfExists( $table_name );
+
+            $table_name = $value['table_prefix'].$value['table_name']['types'];
+            Schema::connection($name)->dropIfExists( $table_name );
         }
     }
 }
